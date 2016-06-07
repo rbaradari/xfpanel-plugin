@@ -49,6 +49,7 @@ public class XFPanelView extends ListView {
     private Integer guiBuildFont = 30;
     private Integer guiClaimFont = 20;
 
+    private Boolean showSkipped = false;
     private Boolean showDescription = false;
     private Boolean showBrokenBuildCount = false;
     private Boolean showZeroTestCounts = true;
@@ -164,6 +165,13 @@ public class XFPanelView extends ListView {
         return this.showDescription;
     }
     
+    public Boolean getShowSkipped() {
+        if (this.showSkipped == null) {
+            this.showSkipped = false;
+        }
+        return this.showSkipped;
+    }
+
     public Boolean getShowBrokenBuildCount() {
         if (this.showBrokenBuildCount == null) {
             this.showBrokenBuildCount = Boolean.FALSE;;
@@ -450,6 +458,7 @@ public class XFPanelView extends ListView {
         this.guiInfoFont = asInteger(req, "guiInfoFont");
         this.guiBuildFont = asInteger(req, "guiBuildFont");
         this.showDescription = Boolean.parseBoolean(req.getParameter("showDescription"));
+        this.showSkipped = Boolean.parseBoolean(req.getParameter("showSkipped"));
         this.sortDescending = Boolean.parseBoolean(req.getParameter("sortDescending"));
         this.showTimeStamp = Boolean.parseBoolean(req.getParameter("showTimeStamp"));
         this.showZeroTestCounts = Boolean.parseBoolean(req.getParameter("showZeroTestCounts"));

@@ -229,6 +229,18 @@ public final class XFPanelEntry {
         }
         return 0;
     }
+    
+    /**
+     * @return skipped tests
+     */
+    public int getSkipCount() {
+        Run<?, ?> run = this.job.getLastSuccessfulBuild();
+        if (run != null) {
+            AbstractTestResultAction<?> tests = run.getAction(AbstractTestResultAction.class);
+            return tests != null ? tests.getSkipCount() : 0;
+        }
+        return 0;
+    }
 
     /**
      * @return total successful tests
